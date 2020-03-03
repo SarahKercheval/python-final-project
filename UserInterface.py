@@ -7,15 +7,15 @@ import tkinter as tk
 from tkinter import *
 
 class first_window(tk.Frame):
-    def __init__(self, parent):
+    def __init__(self, parent, *args):
         self.parent = parent
-        self.frame = tk.Frame(parent)
         parent.title('Recipe Creator and Organizer')
         parent.rowconfigure(3, minsize=300,weight = '1')
         parent.columnconfigure(2, minsize=300,weight='1')
         label = tk.Label(parent, text='Please select an option').grid(column = 2, row = 1, pady = 20)
         #create buttons
-        b1 = tk.Button(parent, text="Create new recipe", background='green', command=lambda: second_window(parent))
+        b1 = tk.Button(parent, text="Create new recipe", background='green', command=lambda: second_window(parent
+        ))
         b2 = tk.Button(parent, text='Open saved recipe')
         b3 = tk.Button(parent, text='Schedule recipes')
         #disable button 2 and 3 cause not using them rn
@@ -29,14 +29,13 @@ class first_window(tk.Frame):
         #run the program
         parent.mainloop()
 
-    def destroy(self):
-        self.destroy()
+    def call_second(self):
+        pass
         
         
-class second_window(tk.Toplevel):
+class second_window(tk.Frame):
     def __init__(self, parent):
-        tk.Toplevel.__init__(self, parent)
-        self.geometry('800x700')
+        tk.Frame.__init__(self, parent)
         self.parent = parent
         parent.title('Categories')
         tk.Label(parent, text='Please fill out the following; ').grid(column = 2, row = 1)
@@ -44,7 +43,7 @@ class second_window(tk.Toplevel):
         self.recipe_name.grid(column = 2, row = 2, sticky='w',columnspan=3)
         self.description = Entry(parent, width = 40)
         self.description.grid(column = 2, row = 3,sticky='w',columnspan=3, ipady = 20)
-        tk.Scrollbar(self.description)
+        #tk.Scrollbar(self.description)
         tk.Label(text='Recipe name: ').grid(column = 1, row = 2, sticky = 'e')
         tk.Label(text='Brief recipe description: ').grid(column = 1, row = 3,sticky = 'e')
         tk.Label(text="Please select the Categories in which your recipe falls. \nCan select multiple.").grid(column = 2, row = 6,sticky ='w', columnspan = 3, pady = 30)
@@ -83,8 +82,6 @@ class second_window(tk.Toplevel):
         self.quit.grid(column = 5, row = 1, sticky='ne', pady = 10, padx = 30, ipadx = 30)
         #back button
 
-
-
         parent.mainloop()
     #method to quit the program using a handy dandy button
     def quit(parent):
@@ -94,8 +91,6 @@ class second_window(tk.Toplevel):
 
 class recipe_specifics(tk.Frame):
     def __init__(self):
-        
-
         pass
     
 
